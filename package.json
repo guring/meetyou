@@ -4,7 +4,21 @@
   "description": "common resource package",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "eslint": "eslint **/*.js",
+    "stylelint": "stylelint **/*.css",
+    "prepush": "npm run eslint && npm run stylelint"
+  },
+  "dependencies": {
+    "autoprefixer": "^6.3.3",
+    "fastclick": "^1.0.6",
+    "hammerjs": "^2.0.6"
+  },
+  "devDependencies": {
+    "eslint": "^2.4.0",
+    "eslint-config-airbnb": "^6.1.0",
+    "husky": "^0.11.3",
+    "stylelint": "^5.0.1",
+    "stylelint-config-standard": "^4.0.1"
   },
   "repository": {
     "type": "git",
