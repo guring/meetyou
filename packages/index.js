@@ -1,2 +1,2 @@
-exports.meiyou = require('./lib/meiyou');
-exports.yunqi = require('./lib/yunqi');
+exports.meiyou = require('./meiyou');
+exports.yunqi = require('./yunqi');

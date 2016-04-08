@@ -1,3 +1,3 @@
-exports.sdk = require('./lib/sdk');
-exports.bridge = require('./lib/bridge');
-exports.action = require('./lib/action');
+exports.sdk = require('./sdk');
+exports.bridge = require('./bridge');
+exports.action = require('./action');
