@@ -792,8 +792,8 @@
     var waitObject = _waitList[method];
     if (waitObject && waitObject.callback) {
       waitObject.callback.apply(this, arguments);
+      delete _waitList[method];
     }
-    _waitList.shift(waitObject);
     return this;
   };
 
