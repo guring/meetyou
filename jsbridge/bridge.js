@@ -581,6 +581,21 @@
 
   function log(message) {
     global.console && global.console.log(message);
+
+    if (typeof message === 'object') {
+      message = JSON.stringify(message);
+    }
+
+    var div = document.getElementById('bridge-debug-node');
+    if (!div) {
+      div = document.createElement('div');
+      div.setAttribute('id', 'bridge-debug-node');
+      div.style.cssText = 'position:absolute;bottom:0px;left:0px;width:100%;padding:10px;background:rgba(0, 0, 0, .33);';
+      document.body.appendChild(div);
+    }
+    var pre = document.createElement('pre');
+    pre.innerHTML = message;
+    div.appendChild(pre);
   }
 
   /**
@@ -689,6 +704,7 @@
    * @return {[type]}
    */
   bridge.init = function(config) {
+    log('[bridge] start init...');
 
     config = config || {};
     if (this.isReady) {
@@ -750,6 +766,7 @@
    * @return {[type]}
    */
   bridge.invoke = function(method, option) {
+    log('[bridge] invoke ' + method);
     _invoke(method, option);
   };
 
@@ -762,6 +779,7 @@
    * @return {[type]}
    */
   bridge.wait = function(method, option, callback) {
+    log('[bridge] wait ' + method);
 
     var now = (new Date()).getTime();
     var callbackId = method + '-' + now;
@@ -789,6 +807,8 @@
    * @return {[type]}
    */
   bridge.dispatchWait = function(method, data) {
+    log('[bridge] dispatchWait ' + method);
+
     var waitObject = _waitList[method];
     if (waitObject && waitObject.callback) {
       waitObject.callback.apply(this, arguments);
@@ -805,6 +825,8 @@
    * @return {[type]}
    */
   bridge.listen = function(method, data, callback) {
+    log('[bridge] listen ' + method);
+
     var listenObject = _listenList[method];
     if (!listenObject) {
       listenObject = {
@@ -828,6 +850,8 @@
    * @return {[type]}
    */
   bridge.dispatchListener = function(method, data) {
+    log('[bridge] dispatchListener ' + method);
+
     var listenObject = _listenList[method];
     if (listenObject) {
       var callback = listenObject['callback'];
@@ -846,6 +870,8 @@
 
   //直接发出协议请求
   bridge.callBridge = function(src) {
+    log('[bridge] callBridge ' + src);
+
     var iframe = document.createElement('iframe');
     iframe.style.display = 'none';
     iframe.src = src;
