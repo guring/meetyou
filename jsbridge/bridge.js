@@ -580,8 +580,11 @@
   };
 
   function log(message) {
-    global.console && global.console.log(message);
+    if (!bridge.config.debug) {
+      return;
+    }
 
+    global.console && global.console.log(message);
     if (typeof message === 'object') {
       message = JSON.stringify(message);
     }
