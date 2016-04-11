@@ -707,8 +707,6 @@
    * @return {[type]}
    */
   bridge.init = function(config) {
-    log('[bridge] start init...');
-
     config = config || {};
     if (this.isReady) {
       log('init fn shuold call once');
@@ -729,6 +727,8 @@
     _initEvent.initEvent('MeiYouJSBridgeInit');
     _initEvent.bridge = this;
     doc.dispatchEvent(_initEvent);
+
+    log('[bridge] init');
   };
 
   /*
