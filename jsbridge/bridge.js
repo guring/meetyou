@@ -576,7 +576,7 @@
 
   };
   var defaultConfig = {
-    debug: true,
+    debug: false,
   };
 
   function log(message) {
