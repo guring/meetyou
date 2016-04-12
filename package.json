@@ -19,6 +19,8 @@
     "eslint-config-airbnb": "^6.1.0",
     "autoprefixer": "^6.3.3",
     "husky": "^0.11.3",
+    "lazy-load-images": "^1.0.1",
+    "live-on-stage": "^1.0.8",
     "stylelint": "^5.0.1",
     "stylelint-config-standard": "^4.0.1"
   },
