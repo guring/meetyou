@@ -1,2 +1,2 @@
-exports.client = require('./lib/client');
-exports.tools = require('./lib/tools');
+exports.client = require('./client');
+exports.tools = require('./tools');

@@ -31,8 +31,8 @@ var meetyou = require('meetyou');
 
 #### meetyou.common
 
-- common.tools 常用工具模块，比如 parse querystring params
-- common.client 客户端检测，比如平台，UA
+- `common.tools` 常用工具模块，比如 parse querystring params
+- `common.client` 客户端检测，比如平台，UA
 
 ```
 var common = meetyou.common;
@@ -45,9 +45,9 @@ _.queryParams('channelID')
 公共模块可能包含公共的 js/css/images。
 
 #### meetyou.packages
-- packages.meiyou
-- packages.yunqi
-- packages.youzijie
+- `packages.meiyou`
+- `packages.yunqi`
+- `packages.youzijie`
 
 ```
 var pkgs = meetyou.packages;

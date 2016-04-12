@@ -1,9 +1,9 @@
-var _ = exports = module.exports;
+var _ = require('underscore');
 
 _.queryParams = function(url) {
-  var result = {}, 
+  var result = {},
     queryString = url || window.location.search.slice(1),
-    re = /([^&=]+)=([^&]*)/g, 
+    re = /([^&=]+)=([^&]*)/g,
     m;
 
   while (m = re.exec(queryString)) {
@@ -12,3 +12,5 @@ _.queryParams = function(url) {
 
   return result;
 };
+
+module.exports = _;
