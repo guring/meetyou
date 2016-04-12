@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8>
+<meta name=description content="">
+<meta name=viewport content="width=device-width, initial-scale=1">
+  <title>Countdown</title>
+</head>
+<body>
+  <div class="demo">hello countdown</div>
+  <div id="countDown1" data-time="123456">11</div>
+  <div id="countDown2" data-time="61">11</div>
+</body>
+<script src="../lib/jquery.js"></script>
+<script src="../../components/countdown/index.js"></script>
+<script type="text/javascript">
+  new Countdown({
+    target: 'countDown1',
+    type: 2,
+    seconds: $('#countDown1').attr('data-time')
+  });
+  new Countdown({
+    target: 'countDown2',
+    type: 1,
+    seconds: $('#countDown2').attr('data-time')
+  });
+</script>
+</html>
