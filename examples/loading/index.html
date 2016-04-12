@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Loading</title>
+  <link rel="stylesheet" type="text/css" href="loading.css">
+  <style type="text/css">
+    .demo {
+      height: 10000px;
+    }
+  </style>
+</head>
+<body>
+  <div class="demo">hello loading</div>
+</body>
+<script src="../lib/jquery.js"></script>
+<script src="../../components/loading/index.js"></script>
+<script type="text/javascript">
+  function test() {
+    var _loading = new Loading();
+    setTimeout(function() {
+      _loading.hide();
+    }, 5000);
+  }
+  test();
+</script>
+</html>
