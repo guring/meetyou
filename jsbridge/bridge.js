@@ -618,13 +618,15 @@
     //alert(src);
     var iframe = document.createElement('iframe');
     iframe.style.display = 'none';
-    iframe.src = src;
 
-    iframe.onload = function() {
+    iframe.onload = iframe.onerror = function() {
+      iframe.onload = iframe.onerror = undefined;
       setTimeout(function() {
-        iframe.remove();
+        iframe.parentNode.removeChild(iframe);
       }, 0);
     };
+
+    iframe.src = src;
     document.getElementsByTagName('body')[0].appendChild(iframe);
   }
 
