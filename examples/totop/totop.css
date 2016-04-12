@@ -1,0 +1,17 @@
+.ui-totop {
+  position: fixed;
+  bottom: 5rem;
+  right: 2rem;
+  cursor: pointer;
+  z-index: 666;
+}
+
+.ui-totop a {
+  display: inline-block;
+  width: 5rem;
+  height: 5rem;
+  overflow: hidden;
+  text-indent: -999em;
+  background-image: url("totop.png");
+  background-size: 100%;
+}
