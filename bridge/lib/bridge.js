@@ -26,7 +26,7 @@
     os: '{{os}}',
     mac: '{{mac}}'
   };
-
+  bridge.config = defaultConfig;
   function log(message) {
     var id = '____bridge_debug_node';
     var div = document.getElementById(id);
