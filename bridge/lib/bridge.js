@@ -262,7 +262,7 @@
     };
     _waitList[method] = waitObject;
     _invoke(method, option);
-    return this;
+    return bridge;
   };
 
   /*
@@ -286,7 +286,7 @@
       callback.apply(this, [method, temp]);
       delete _waitList[method];
     }
-    return this;
+    return bridge;
   };
 
   /*
