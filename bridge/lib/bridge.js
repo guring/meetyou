@@ -31,7 +31,7 @@
     var id = '____bridge_debug_node';
     var div = document.getElementById(id);
     var pre = document.createElement('pre');
-    var msg;
+    var msg = message;
     if (!bridge.config.debug) {
       return;
     }
