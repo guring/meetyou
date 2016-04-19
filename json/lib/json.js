@@ -194,7 +194,7 @@
       '"': '\\"',
       '\\': '\\\\'
     };
-    JSON.stringify = function(value, replacer, space) {
+    global.JSON.stringify = function(value, replacer, space) {
 
       // The stringify method takes a value and an optional replacer, and an optional
       // space parameter, and returns a JSON text. The replacer can be a function
@@ -242,7 +242,7 @@
 
   // If the JSON object does not yet have a parse method, give it one.
   if (typeof global.JSON.parse !== 'function') {
-    JSON.parse = function(text, reviver) {
+    global.JSON.parse = function(text, reviver) {
 
       // The parse method takes a text and an optional reviver function, and returns
       // a JavaScript value if the text is a valid JSON text.
