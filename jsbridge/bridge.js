@@ -540,15 +540,25 @@
           unicodeBinary = [];
         }
       }
-      return unicode;
+        var value = '';
+        for (var i = 0; i < unicode.length; i++) {
+          value += String.fromCharCode(unicode[i]);
+        }
+        return value;
     }
   };
 
   function urlsafe_b64encode(input) {
-    return window.base64.encoder(input).replace('+', '-').replace('/', '_');
+    return window.base64.encoder(input).replace(/\+/g, '-').replace(/\//g, '_');
+  }
+
+  function urlsave_b64decode(input) {
+	return window.base64.decoder(input.replace(/\-/g, '+').replace(/\_/g, '/'));
   }
 
   window.urlsafe_b64encode = urlsafe_b64encode;
+  window.urlsave_b64decode = urlsave_b64decode;
+
   window.base64 = __BASE64;
 })(window, document);
 
