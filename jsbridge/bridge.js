@@ -607,27 +607,39 @@
    * @return {[type]}
    */
   function _createElement(options) {
-
     var src = scheme + options.method;
+    var timeout = 1000;
+    var called = false;
+    var callTimeout;
+
     if (options.data) {
       var data = JSON.stringify(options.data);
       var json = urlsafe_b64encode(data);
       src += '?params=' + json;
     }
 
-    //alert(src);
     var iframe = document.createElement('iframe');
     iframe.style.display = 'none';
 
-    iframe.onload = iframe.onerror = function() {
-      iframe.onload = iframe.onerror = undefined;
-      setTimeout(function() {
-        iframe.parentNode.removeChild(iframe);
-      }, 0);
-    };
-
+    iframe.onload = iframe.onerror = callback;
     iframe.src = src;
+    callTimeout = window.setTimeout(callback, timeout);
     document.getElementsByTagName('body')[0].appendChild(iframe);
+
+    function callback() {
+      if (called) {
+        return;
+      }
+
+      iframe.onload = iframe.onerror = undefined;
+      iframe.parentNode.removeChild(iframe);
+      if (callTimeout) {
+        window.clearTimeout(callTimeout);
+        callTimeout = null;
+      }
+
+      called = true;
+    }
   }
 
 
