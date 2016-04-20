@@ -1,6 +1,8 @@
 公共资源模块
 ============
 
+# [js桥说明文档](http://git.meiyou.im/iOS/iOS/wikis/URI)
+
 公共模块在不同的项目里面会重复用到，用 Gitlab 统一维护管理，而不是在项目需要的时候从别的地方 copy 一份代码到当前的项目中。
 
 ## 包含模块
@@ -21,7 +23,14 @@
 ```
 npm install -S git+ssh://git@gitlab.meiyou.com:h5/meetyou.git
 ```
+
 上面的操作会将公共模块引入到需要的项目中，包路径在项目目录下 node_modules/meetyou，并且将依赖信息记录到 package.json。
+
+window下必须使用 git shell 才能正确安装，自带的cmd命令默认不支持git和ssh命令，如有需要可自己拓展安装别的命令行工具
+
+安装过程如果出错，请再次尝试安装；
+
+如果还不能正确安装，请删除源项目下的package.json内的依赖meetyou字段后再尝试
 
 ## API
 
@@ -117,7 +126,7 @@ var location = require('meetyou/location');
 
 #### meetyou.query
 
-此模块用于window.location.search参数的解析
+此模块用于 类似 window.location.search 参数的解析
 
 ```
 var query = require('meetyou/query');
