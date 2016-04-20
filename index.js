@@ -12,4 +12,4 @@ exports.bridge = require('./bridge');
 exports.location = require('./location');
 exports.query = require('./query');
 
-exports.swipe = require('swipe');
+exports.swipe = require('./swipe');
