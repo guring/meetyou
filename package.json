@@ -1,5 +1,6 @@
 {
   "name": "meetyou",
+  "private": true,
   "version": "1.0.19",
   "description": "common resource package",
   "main": "index.js",

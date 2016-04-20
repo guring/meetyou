@@ -141,15 +141,19 @@
 	      default:
 	        break;
 	    }
+
 	    return platform;
 	  };
 
 	  var Platform = function() {
 	  };
+
 	  Platform.parse = parse;
 
 	  if (typeof window === 'object') {
-	    window.Platform = Platform.parse(location.search);
+	    var MeetYou = window.MeetYou || {};
+	    MeetYou.Platform = Platform.parse(location.search);
+	    window.MeetYou = MeetYou;
 	  }
 
 	  return Platform;
