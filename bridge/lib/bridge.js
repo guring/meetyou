@@ -362,6 +362,8 @@
   window.MeiYouJSBridge = bridge;
   window.dispatchListener = bridge.dispatchListener;
   window.dispatchWait = bridge.dispatchWait;
-
+  if (typeof window.MeetYou === 'object') {
+    window.MeetYou.Bridge = bridge;
+  }
   return bridge;
 }));

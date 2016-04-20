@@ -6,7 +6,7 @@ var config = {
     // index: './src/index.js'
     // base64: './src/base64/index.js'
     bridge: './src/bridge/index.js',
-    location: './src/location/index.js'
+    platform: './platform/index.js'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),

@@ -39,7 +39,7 @@
     var search = '';
     for (var key in query) {
       if (query.hasOwnProperty(key)) {
-        var temp = '&' + key + '=' + encodeURIComponent(query[key]);
+        var temp = '&' + key + '=' + (query[key] ? encodeURIComponent(query[key]) : '');
         search += temp;
       }
     }
