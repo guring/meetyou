@@ -1,1 +1,1 @@
-module.exports = require('swipe');
+module.exports = require('swipejs');
