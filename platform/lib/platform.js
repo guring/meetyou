@@ -85,6 +85,7 @@
       default:
         break;
     }
+
     return platform;
   };
 
@@ -94,9 +95,9 @@
   Platform.parse = parse;
 
   if (typeof window === 'object') {
-    if (typeof window.MeetYou === 'object') {
-      window.MeetYou.Platform = Platform.parse(location.search);
-    }
+    var MeetYou = window.MeetYou || {};
+    MeetYou.Platform = Platform.parse(location.search);
+    window.MeetYou = MeetYou;
   }
 
   return Platform;
