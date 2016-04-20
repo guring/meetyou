@@ -11,3 +11,5 @@ exports.bridge = require('./bridge');
 // 重写掉 window.location，添加query字段
 exports.location = require('./location');
 exports.query = require('./query');
+
+exports.swipe = require('swipe');
