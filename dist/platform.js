@@ -44,14 +44,13 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(4);
+	module.exports = __webpack_require__(3);
 
 
 /***/ },
 /* 1 */,
 /* 2 */,
-/* 3 */,
-/* 4 */
+/* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
 	(function __init(global, factory) {
@@ -61,7 +60,7 @@
 	    factory();
 	  }
 	}(this, function __factory() {
-	  var Query = __webpack_require__(5);
+	  var Query = __webpack_require__(4);
 
 	  var parse = function(search) {
 	    var query = new Query(search, true);
@@ -161,14 +160,14 @@
 
 
 /***/ },
-/* 5 */
+/* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(6);
+	module.exports = __webpack_require__(5);
 
 
 /***/ },
-/* 6 */
+/* 5 */
 /***/ function(module, exports) {
 
 	(function __init(global, factory) {

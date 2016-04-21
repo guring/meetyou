@@ -13,3 +13,4 @@ exports.location = require('./location');
 exports.query = require('./query');
 
 exports.swipe = require('./swipe');
+exports.zepto = require('./zepto');
