@@ -553,7 +553,7 @@
   }
 
   function urlsave_b64decode(input) {
-	return window.base64.decoder(input.replace(/\-/g, '+').replace(/\_/g, '/'));
+  return window.base64.decoder(input.replace(/\-/g, '+').replace(/\_/g, '/'));
   }
 
   window.urlsafe_b64encode = urlsafe_b64encode;
@@ -585,7 +585,8 @@
     mac: '{{mac}}',
 
   };
-  var defaultConfig = {
+
+  var defaultConfig = bridge.config = {
     debug: false,
   };
 
@@ -704,7 +705,6 @@
 
   function _report() {}
 
-
   function _merge(to, from) {
     for (var key in from) {
       if (has.call(from, key)) {
@@ -731,13 +731,14 @@
    * @return {[type]}
    */
   bridge.init = function(config) {
-    config = config || {};
     if (this.isReady) {
       log('init fn shuold call once');
       return;
     }
-    var conf = _merge(defaultConfig, config);
-    this.config = conf;
+
+    config = config || {};
+    bridge.config = _merge(defaultConfig, config);
+
     while (_readyList.length) {
       var item = _readyList[0];
       typeof item === 'function' ? item.apply(this, arguments) : noop.apply(this, arguments);
@@ -770,7 +771,6 @@
    * @return {[type]}
    */
   bridge.error = function() {
-
   };
 
 
@@ -780,7 +780,6 @@
    * @return {[type]}
    */
   bridge.unlisten = function(method) {
-
     _unlisten(method);
     delete _listenList[method];
   };
@@ -807,6 +806,7 @@
    */
   bridge.wait = function(method, option, callback) {
     log('[bridge] wait ' + method);
+    log('[bridge] wait ' + JSON.stringify(option));
 
     var now = (new Date()).getTime();
     var callbackId = method + '-' + now;
@@ -835,6 +835,7 @@
    */
   bridge.dispatchWait = function(method, data) {
     log('[bridge] dispatchWait ' + method);
+    log('[bridge] dispatchWait ' + JSON.stringify(data));
 
     var waitObject = _waitList[method];
     if (waitObject && waitObject.callback) {
@@ -853,17 +854,23 @@
    */
   bridge.listen = function(method, data, callback) {
     log('[bridge] listen ' + method);
+    log('[bridge] listen ' + JSON.stringify(data));
 
-    var listenObject = _listenList[method];
-    if (!listenObject) {
-      listenObject = {
-        method: method,
-        data: data,
-        listenList: [],
-      };
+    if (typeof data !== 'object') {
+      data = {};
     }
-    listenObject.listenList.push(data);
-    listenObject['callback'] = callback;
+
+    if (typeof callback !== 'function') {
+      callback = noop;
+    }
+
+    var listenObject = {
+      method: method,
+      data: data,
+      callback: callback
+    };
+
+    // overrides
     _listenList[method] = listenObject;
     _listen(listenObject);
     return this;
@@ -878,20 +885,14 @@
    */
   bridge.dispatchListener = function(method, data) {
     log('[bridge] dispatchListener ' + method);
+    log('[bridge] dispatchListener ' + JSON.stringify(data));
 
     var listenObject = _listenList[method];
     if (listenObject) {
       var callback = listenObject['callback'];
       if (callback) {
-        callback.apply(this,arguments);
+        callback.apply(this, arguments);
       };
-
-      // var listenList = listenObject.listenList;
-      // if (listenList && listenList.length) {
-      //  for (var i = listenList.length - 1; i >= 0; i--) {
-      //    listenList[i]['callback'].apply(this, data);
-      //  }
-      // }
     }
   };
 
