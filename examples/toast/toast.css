@@ -2,15 +2,23 @@
   position: fixed;
   top: 50%;
   left: 50%;
-  min-width: 10rem;
-  max-width: 16rem;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  background-color: #000;
+  max-width: 70%;
+  padding: 0.4rem 0.6rem;
+  border-radius: 0.4rem;
+  background-color: rgba(255, 135, 160, 0.9);
   color: #fff;
   text-align: center;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
+  line-height: 2.2rem;
   word-break: break-all;
   box-sizing: border-box;
-  z-index: 1000;
+  z-index: 3000;
+  opacity: 1;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  transition: opacity 0.25s ease-out;
+}
+
+.ui-toast-show {
+  opacity: 0;
 }

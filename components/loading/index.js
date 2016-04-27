@@ -14,17 +14,21 @@
 
   var Loading = function(opt) {
     var defaults = {
-      callback: empty
+      callback: empty,
+      text: ''
     };
 
     var options = $.extend(defaults, opt);
 
     var view = $(
-      '<div class="ui-loading">' +
-        '<div class="ui-loading-bounce">' +
-          '<div class="ui-loading-bounce-child ui-loading-bounce1"></div>' +
-          '<div class="ui-loading-bounce-child ui-loading-bounce2"></div>' +
-          '<div class="ui-loading-bounce-child ui-loading-bounce3"></div>' +
+      '<div class="ui-loading hidden">' +
+        '<div class="ui-loading-wrap">' +
+          '<div class="ui-loading-bounce">' +
+            '<div class="ui-loading-bounce-child ui-loading-bounce1"></div>' +
+            '<div class="ui-loading-bounce-child ui-loading-bounce2"></div>' +
+            '<div class="ui-loading-bounce-child ui-loading-bounce3"></div>' +
+          '</div>' +
+          '<div class="ui-tips">' + options.text + '</div>' +
         '</div>' +
       '</div>'
     );
@@ -32,18 +36,13 @@
 
     this.options = options;
     this.view = view;
-
-    this.init();
   };
 
-  Loading.prototype.init = function() {
-    this.show();
-  };
-
-  Loading.prototype.show = function() {
+  Loading.prototype.show = function(text) {
     if (!this.isopen) {
+      this.view.find('.ui-tips').html(text);
       this.isopen = true;
-      this.view.show();
+      this.view.removeClass('hidden');
     }
     return this;
   };
@@ -51,7 +50,7 @@
   Loading.prototype.hide = function() {
     if (this.isopen) {
       this.isopen = false;
-      this.view.hide();
+      this.view.addClass('hidden');
       if (this.options.callback) {
         this.options.callback.call(this);
       }
@@ -62,6 +61,10 @@
 
   Loading.prototype.destroy = function() {
     this.view.remove();
+  };
+
+  Loading.create = function(arg) {
+    return new Loading(arg);
   };
 
   this.Loading = Loading;

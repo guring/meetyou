@@ -1,0 +1,70 @@
+.ui-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  background-color: #fff;
+  font-size: 1.4rem;
+  color: #888;
+  border: 1px solid #eee;
+  border-radius: 0.5rem;
+  outline: 0;
+  background-clip: padding-box;
+  opacity: 1;
+  width: 80%;
+  transform: translateX(-50%) translateY(-50%);
+  transition: all 1s ease-in-out;
+  z-index: 1000;
+}
+
+.ui-dialog-title {
+  position: relative;
+  font-size: 1.6rem;
+  height: 4rem;
+  line-height: 4rem;
+  color: #ff5073;
+  text-align: center;
+}
+
+.ui-dialog-content {
+  min-height: 4rem;
+  padding: 1rem 1rem 0;
+}
+
+.ui-dialog-input-form {
+  margin-bottom: 1rem;
+}
+
+.ui-dialog-name {
+  line-height: 3rem;
+}
+
+.ui-dialog-tips {
+  display: inline-block;
+  color: #ff5073;
+  margin-left: 1rem;
+}
+
+.ui-dialog-input {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  height: 3rem;
+  line-height: 2rem;
+  color: #323232;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  outline: none;
+}
+
+.ui-dialog-footer {
+  padding: 1rem 1rem 2rem;
+  text-align: center;
+}
+
+.ui-dialog-cancel {
+  float: left;
+}
+
+.ui-dialog-ok {
+  float: right;
+}

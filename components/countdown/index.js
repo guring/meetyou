@@ -10,12 +10,15 @@
     throw 'need require jquery';
   }
 
+  var empty = function() {};
+
   var Countdown = function(opt) {
     var defaults = {
-      target: '',
+      target: null,
       type: 1,
       seconds: 0,
-      fullFlag: false
+      fullFlag: false,
+      callback: empty
     };
 
     var options = $.extend(defaults, opt);
@@ -32,7 +35,6 @@
     var countTime = '';
     var countTiming = '';
     var type = _type || 0;
-    var $target = document.getElementById(target);
 
     switch (type) {
       case 1:
@@ -43,6 +45,10 @@
         tips = '活动已结束';
         countTime = self.getLeftTime2(seconds);
         break;
+      case 3:
+        tips = '刚刚';
+        countTime = self.getLeftTime3(seconds);
+        break;
       default:
         tips = '已结束';
         countTime = self.getLeftTime1(seconds);
@@ -50,12 +56,15 @@
     }
 
     if (seconds > 0) {
-      $target.innerHTML = countTime;
+      target.html(countTime);
       var it = setInterval(function() {
         seconds--;
         if (seconds <= 0) {
-          $target.innerHTML = tips;
+          target.html(tips);
           clearInterval(it);
+          if (self.options.callback) {
+            self.options.callback.call(self);
+          }
           return;
         }
         switch (type) {
@@ -65,14 +74,17 @@
           case 2:
             countTiming = self.getLeftTime2(seconds);
             break;
+          case 3:
+            countTiming = self.getLeftTime3(seconds);
+            break;
           default:
             countTiming = self.getLeftTime1(seconds);
             break;
         }
-        $target.innerHTML = countTiming;
+        target.html(countTiming);
       }, 1000);
     } else {
-      $target.innerHTML = tips;
+      target.html(tips);
     }
   };
 
@@ -131,6 +143,7 @@
         return '剩' + rst.s + '秒';
       }
     }
+
     return '已结束';
   };
 
@@ -152,7 +165,36 @@
         return rst.s + '秒后结束';
       }
     }
+
     return '活动已结束';
+  };
+
+  Countdown.prototype.getLeftTime3 = function(_seconds) {
+    var self = this;
+    var seconds = +_seconds;
+    var now = new Date().getTime();
+    var diff = Math.floor(now / 1000) - seconds;
+    var rst = self.getEndTime(diff);
+    if (!isNaN(diff) && diff >= 0) {
+      if (+rst.d > 0) {
+        return rst.d + '天前';
+      }
+      if (+rst.h > 0) {
+        return rst.h + '小时前';
+      }
+      if (+rst.m > 0) {
+        return rst.m + '分钟前';
+      }
+      if (+rst.s > 0) {
+        return rst.s + '刚刚';
+      }
+    }
+
+    return '刚刚';
+  };
+
+  Countdown.create = function(arg) {
+    return new Countdown(arg);
   };
 
   this.Countdown = Countdown;
