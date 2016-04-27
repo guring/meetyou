@@ -5,6 +5,9 @@
 
 # [七牛图片裁剪说明](http://developer.qiniu.com/code/v6/api/kodo-api/image/imageview2.html)
 
+# [旧版协议说明](http://gitlab.meiyou.com/h5/meetyou/blob/master/docs/oldbridge.md)
+
+
 公共模块在不同的项目里面会重复用到，用 Gitlab 统一维护管理，而不是在项目需要的时候从别的地方 copy 一份代码到当前的项目中。
 
 ## 包含模块
