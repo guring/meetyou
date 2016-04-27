@@ -604,7 +604,7 @@
     if (!div) {
       div = document.createElement('div');
       div.setAttribute('id', 'bridge-debug-node');
-      div.style.cssText = 'position:absolute;bottom:0px;left:0px;width:100%;padding:10px;background:rgba(0, 0, 0, .33);';
+      div.style.cssText = 'position:absolute;bottom:0px;left:0px;width:100%;padding:10px;color:#fff;background:rgba(0,0,0,.67);';
       document.body.appendChild(div);
     }
     var pre = document.createElement('pre');
@@ -805,8 +805,7 @@
    * @return {[type]}
    */
   bridge.wait = function(method, option, callback) {
-    log('[bridge] wait ' + method);
-    log('[bridge] wait ' + JSON.stringify(option));
+    log('[send wait] ' + method + '\n' + JSON.stringify(option));
 
     var now = (new Date()).getTime();
     var callbackId = method + '-' + now;
@@ -834,8 +833,7 @@
    * @return {[type]}
    */
   bridge.dispatchWait = function(method, data) {
-    log('[bridge] dispatchWait ' + method);
-    log('[bridge] dispatchWait ' + JSON.stringify(data));
+    log('[receive wait] ' + method + '\n' + JSON.stringify(data));
 
     var waitObject = _waitList[method];
     if (waitObject && waitObject.callback) {
@@ -853,8 +851,7 @@
    * @return {[type]}
    */
   bridge.listen = function(method, data, callback) {
-    log('[bridge] listen ' + method);
-    log('[bridge] listen ' + JSON.stringify(data));
+    log('[send listen] ' + method + '\n' + JSON.stringify(data));
 
     if (typeof data !== 'object') {
       data = {};
@@ -884,14 +881,13 @@
    * @return {[type]}
    */
   bridge.dispatchListener = function(method, data) {
-    log('[bridge] dispatchListener ' + method);
-    log('[bridge] dispatchListener ' + JSON.stringify(data));
+    log('[receive listen] ' + method + '\n' + JSON.stringify(data));
 
     var listenObject = _listenList[method];
     if (listenObject) {
       var callback = listenObject['callback'];
       if (callback) {
-        callback.apply(this, arguments);
+        callback.apply(this,arguments);
       };
     }
   };

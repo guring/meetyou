@@ -1,7 +1,7 @@
 {
   "name": "meetyou",
   "private": true,
-  "version": "1.0.21",
+  "version": "1.0.23",
   "description": "common resource package",
   "main": "index.js",
   "scripts": {
