@@ -1,0 +1,55 @@
+.ui-swipe {
+  position: relative;
+  overflow: hidden;
+  height: 13rem;
+  margin-top: 4.6rem;
+}
+
+.ui-swipe .ui-swipe-wrap {
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+}
+
+.ui-swipe .ui-swipe-item {
+  float: left;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.ui-swipe .ui-swipe-item .ui-img-wrap {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 100%;
+  overflow: hidden;
+}
+
+.ui-swipe .ui-swipe-item img {
+  width: 100%;
+  display: block;
+}
+
+.ui-swipe .ui-swipe-item img.full {
+  height: 100%;
+}
+
+.ui-swipe .ui-swipe-doc-wrap {
+  position: absolute;
+  bottom: 0.5rem;
+  width: 100%;
+  text-align: center;
+}
+
+.ui-swipe .ui-swipe-doc-wrap .ui-swipe-doc {
+  display: inline-block;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 5px;
+  margin-right: 5px;
+  border-radius: 50%;
+}
+
+.ui-swipe .ui-swipe-doc-wrap .ui-swipe-doc.active {
+  background-color: #ff5073;
+}
