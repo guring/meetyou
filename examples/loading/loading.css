@@ -11,19 +11,28 @@
   z-index: 999;
 }
 
-.ui-loading-bounce {
+.ui-loading .ui-loading-wrap {
   position: fixed;
   top: 50%;
   left: 50%;
-  width: 8rem;
-  height: 2rem;
-  margin-top: -1rem;
-  margin-left: -4rem;
+  width: 100%;
+  margin-top: -2.5rem;
+  margin-left: -50%;
   text-align: center;
   font-size: 1.4rem;
   word-break: break-all;
   box-sizing: border-box;
   z-index: 1000;
+}
+
+.ui-loading .ui-loading-wrap .ui-loading-bounce {
+  height: 2rem;
+}
+
+
+.ui-loading .ui-loading-wrap .ui-tips {
+  margin-top: 1rem;
+  height: 2rem;
 }
 
 .ui-loading-bounce .ui-loading-bounce-child {

@@ -16,7 +16,9 @@
 <script src="../../components/loading/index.js"></script>
 <script type="text/javascript">
   function test() {
-    var _loading = new Loading();
+    var _loading = new Loading({
+      text: '正在加载，请稍后。。。'
+    });
     setTimeout(function() {
       _loading.hide();
     }, 5000);

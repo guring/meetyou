@@ -5,7 +5,11 @@
     factory.call(global);
   }
 }(this, function utilExports() {
-  var $ = require('jquery');
+  // need require jquery
+  if (!window.jQuery) {
+    throw 'need require jquery';
+  }
+
   var Overlay = require('./overlay');
   var empty = function() {};
 

@@ -8,21 +8,35 @@
 </head>
 <body>
   <div class="demo">hello countdown</div>
+  <h2>类型一：</h2>
   <div id="countDown1" data-time="123456">11</div>
+  <h2>类型二：</h2>
   <div id="countDown2" data-time="61">11</div>
+  <h2>类型三：</h2>
+  <div id="countDown3" data-time="1461292331">11</div>
 </body>
 <script src="../lib/jquery.js"></script>
 <script src="../../components/countdown/index.js"></script>
 <script type="text/javascript">
+  var $countdown1 = $('#countDown1');
   new Countdown({
-    target: 'countDown1',
+    target: $countdown1,
     type: 2,
-    seconds: $('#countDown1').attr('data-time')
+    seconds: $countdown1.attr('data-time')
   });
+
+  var $countdown2 = $('#countDown2');
   new Countdown({
-    target: 'countDown2',
+    target: $countdown2,
     type: 1,
-    seconds: $('#countDown2').attr('data-time')
+    seconds: $countdown2.attr('data-time')
+  });
+
+  var $countdown3 = $('#countDown3');
+  new Countdown({
+    target: $countdown3,
+    type: 3,
+    seconds: $countdown3.attr('data-time')
   });
 </script>
 </html>
