@@ -77,6 +77,20 @@
     liveOnStage.refresh(this.options.selector);
   };
 
+  Lazyload.lazy = function() {
+    if (!lazyLoadImages) {
+      lazyLoadImages.init();
+    } else {
+      setTimeout(function() {
+        lazyLoadImages.refresh();
+      }, 500);
+    }
+  };
+
+  Lazyload.create = function(arg) {
+    return new Lazyload(arg);
+  };
+
   this.Lazyload = Lazyload;
 
   return Lazyload;

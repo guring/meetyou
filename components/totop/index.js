@@ -16,7 +16,7 @@
     var defaults = {
       autohide: true,
       offset: 100,
-      speed: 500,
+      speed: 300,
       duration: 100,
       callback: empty
     };
@@ -54,6 +54,10 @@
         }, options.duration);
       }
     });
+  };
+
+  Totop.create = function(arg) {
+    return new Totop(arg);
   };
 
   this.Totop = Totop;
