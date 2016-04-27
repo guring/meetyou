@@ -1,5 +1,4 @@
-公共资源模块
-============
+# 公共资源模块
 
 # [js桥说明文档](http://git.meiyou.im/iOS/iOS/wikis/URI)
 
@@ -7,10 +6,10 @@
 
 # [旧版协议说明](http://gitlab.meiyou.com/h5/meetyou/blob/master/docs/oldbridge.md)
 
-
 公共模块在不同的项目里面会重复用到，用 Gitlab 统一维护管理，而不是在项目需要的时候从别的地方 copy 一份代码到当前的项目中。
 
 ## 包含模块
+
 - jssdk
 - common
 - packages
@@ -19,7 +18,6 @@
 - JSON
 - location
 - query
-
 
 如果项目中需要依赖上面模块中的一个或多个，就有必要使用公共模块。
 
@@ -43,13 +41,13 @@ window下必须使用 git shell 才能正确安装，自带的cmd命令默认不
 var meetyou = require('meetyou');
 ```
 
-#### meetyou.jssdk
+### meetyou.jssdk
 
 - `jssdk.sdk` sdk 模块，请求约定的协议
 - `jssdk.bridge` bridge 模块
 - `jssdk.action` 事件操作模块，比如 `goback`, `mobclick`
 
-#### meetyou.common
+### meetyou.common
 
 - `common.tools` 常用工具模块，比如 parse querystring params
 - `common.client` 客户端检测，比如平台，UA
@@ -64,7 +62,8 @@ _.queryParams('channelID')
 
 公共模块可能包含公共的 js/css/images。
 
-#### meetyou.packages
+### meetyou.packages
+
 - `packages.meiyou`
 - `packages.yunqi`
 - `packages.youzijie`
@@ -77,7 +76,7 @@ pkgs.meiyou.android // 美柚 App Android 客户端
 pkgs.yunqi.ios // 孕期 App iOS 客户端
 ```
 
-#### meetyou.bridge
+### meetyou.bridge
 
 bridge的wait方法是一个类似于ajax的方法，它的执行过程是异步的
 
@@ -87,49 +86,44 @@ meetyou.jsbridge 包含 base64，json模块
 
 meetyou.bridge 引用base64, json；
 
-- ```bridge.wait``` 等待回调方法
-- ```bridge.listen``` 注册监听事件
-- ```bridge.invoke``` 直接调用方法
+- `bridge.wait` 等待回调方法
+- `bridge.listen` 注册监听事件
+- `bridge.invoke` 直接调用方法
 
 ```
 var bridge = require('meetyou/bridge');
 bridge.wait('share/do', {}, function(url, data){
 
 });
-
 ```
 
-#### meetyou.base64
+### meetyou.base64
+
 ```
 var base64 = require('meetyou/base64');
 base64.encoder('whatever');
-
 ```
 
-
-#### meetyou.json
+### meetyou.json
 
 此模块为polyfill，现大部分浏览器都支持，
 
 ```
 var json = require('meetyou/json');
 json.parse('{}');
-
 ```
 
-#### meetyou.location
+### meetyou.location
 
-此模块会重写 ```window.location``` 的属性，
+此模块会重写 `window.location` 的属性，
 
-添加 ```window.location.query``` 属性，
-解释```window.location.search``` 成 ```object```
-
+添加 `window.location.query` 属性， 解释`window.location.search` 成 `object`
 
 ```
 var location = require('meetyou/location');
 ```
 
-#### meetyou.query
+### meetyou.query
 
 此模块用于 类似 window.location.search 参数的解析
 
